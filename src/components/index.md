@@ -65,30 +65,30 @@ import React from 'react';
 import HeaderSearch from '@/components/HeaderSearch';
 
 export default () => {
-  return (
-    <HeaderSearch
-      placeholder="站内搜索"
-      defaultValue="umi ui"
-      options={[
-        { label: 'Ant Design Pro', value: 'Ant Design Pro' },
-        {
-          label: 'Ant Design',
-          value: 'Ant Design',
-        },
-        {
-          label: 'Pro Table',
-          value: 'Pro Table',
-        },
-        {
-          label: 'Pro Layout',
-          value: 'Pro Layout',
-        },
-      ]}
-      onSearch={(value) => {
-        console.log('input', value);
-      }}
-    />
-  );
+  // return (
+  //   <HeaderSearch
+  //     placeholder="站内搜索"
+  //     defaultValue="umi ui"
+  //     options={[
+  //       { label: 'Ant Design Pro', value: 'Ant Design Pro' },
+  //       {
+  //         label: 'Ant Design',
+  //         value: 'Ant Design',
+  //       },
+  //       {
+  //         label: 'Pro Table',
+  //         value: 'Pro Table',
+  //       },
+  //       {
+  //         label: 'Pro Layout',
+  //         value: 'Pro Layout',
+  //       },
+  //     ]}
+  //     onSearch={(value) => {
+  //       console.log('input', value);
+  //     }}
+  //   />
+  // );
 };
 ```
 

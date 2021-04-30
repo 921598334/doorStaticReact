@@ -2,11 +2,16 @@
 /* eslint-disable */
 import { request } from 'umi';
 
+
+const myurl = "http://"+window.location.hostname+":8080/"
+
+
+
 /** 获取当前的用户 GET /api/currentUser */
 export async function currentUser(options?: { [key: string]: any }) {
 
 
-  return request<API.CurrentUser>('http://localhost:8080/api/currentUser', {
+  return request<API.CurrentUser>(myurl+'api/currentUser', {
     method: 'GET',
     ...(options || {}),
   });
@@ -17,7 +22,7 @@ export async function currentUser(options?: { [key: string]: any }) {
 
 /** 登录接口 POST /api/login/outLogin */
 export async function outLogin(options?: { [key: string]: any }) {
-  return request<Record<string, any>>('http://localhost:8080/api/login/outLogin', {
+  return request<Record<string, any>>(myurl+'api/login/outLogin', {
     method: 'POST',
     ...(options || {}),
   });
@@ -25,7 +30,7 @@ export async function outLogin(options?: { [key: string]: any }) {
 
 /** 登录接口 POST /api/login/account */
 export async function login(body: API.LoginParams, options?: { [key: string]: any }) {
-  return request<API.LoginResult>('http://localhost:8080/api/login/account', {
+  return request<API.LoginResult>(myurl+'api/login/account', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

@@ -3,17 +3,17 @@ import { PageContainer, FooterToolbar } from '@ant-design/pro-layout';
 import { Row, Col, DatePicker, Card, Table, Space, Button, Pagination, message, Modal, Tooltip, Form, InputNumber, Input } from 'antd';
 import styles from './index.less'
 import { useRequest, useIntl, history, useLocation } from 'umi'
-import ColBuilder from './build/ColBuilder'
-import ActionBuilder from './build/ActionBuilder'
-import SearchBuilder from './build/SearchBuilder'
+
 import UserModel from './components/UserModel'
 import { ExclamationCircleOutlined, VideoCameraTwoTone, SearchOutlined } from '@ant-design/icons';
-import { values } from 'lodash';
+
 import { submintAdaptor,arrAdaptor } from './helper'
 //需要安装
 import { stringify } from 'qs'
 import moment from 'moment'
 
+
+const myurl = "http://"+window.location.hostname+":8080/"
 
 
 const index = () => {
@@ -61,7 +61,7 @@ const index = () => {
             console.log('init发送的参数valuesPara为：')
             console.log(valuesPara)
             return {
-                url: `http://localhost:8080/newList/api/getPage?page=${page}&per_page=${perPage}`,
+                url: myurl+`newList/api/getPage?page=${page}&per_page=${perPage}`,
                 method: 'get',
                 params: valuesPara,
                 paramsSerializer: (params) => {
@@ -95,7 +95,7 @@ const index = () => {
             console.log('request发送的参数为：')
             console.log(values)
             return {
-                url: `http://localhost:8080/newList/api${values.url}`,
+                url: myurl+`newList/api${values.url}`,
                 method: 'post',
                 data: {
                     ...values,
@@ -148,17 +148,7 @@ const index = () => {
 
 
 
-    const simpleColum = () => {
-
-
-        return [
-            // tableColum[0] || {},
-            // tableColum[1] || {}
-            // ColBuilder(init?.data?.layout?.tableColumn, actionHandel)[0] || {},
-            // ColBuilder(init?.data?.layout?.tableColumn, actionHandel)[1] || {},
-        ]
-
-    }
+   
 
 
     //批量删除对话框
@@ -194,85 +184,6 @@ const index = () => {
         />
     }
 
-
-    const actionHandel = (action, record) => {
-
-        console.log('点击了：')
-        console.log(action)
-        console.log(record)
-
-        
-
-        switch (action.action) {
-            //修改数据与添加
-            case 'modal':
-
-                // var newUri = action.uri?.replace(/:\w+/g, (filed) => {
-                //     //匹配/:id,/:test 等,然后在record找到id或者test的内容对:id或者:test进行替换为具体值
-                //     console.log(filed)
-                //     return record[filed.replace(':', '')]
-                // })
-                // setModelUrl(newUri)
-
-                setModelTitle("添加")
-
-                break;
-            //单叶设置
-            case 'page':
-                newUri = action.uri?.replace(/:\w+/g, (filed) => {
-                    //匹配/:id,/:test 等,然后在record找到id或者test的内容对:id或者:test进行替换为具体值
-                    console.log(filed)
-                    return record[filed.replace(':', '')]
-                })
-                //页面跳转
-                history.push('/basic-list' + newUri)
-                break;
-
-            case 'reload':
-
-                init.run()
-                break;
-
-            case 'delete':
-                //如果是批量删除record是空，如果是点某一行对某个按钮删除，那么record不wei空
-                console.log('delete:')
-                console.log(record, selectedRows)
-
-                confirm({
-                    //国际化
-                    // title: lang.formatMessage({
-                    //     id:'basicList.actionHandle.confirmTitle'
-                    // },{
-                    //     operationName:action.action
-                    // }),
-                    title: '您确认要删除吗？',
-                    icon: <ExclamationCircleOutlined />,
-                    //如果record是空表示是批量删除，否则是删除某一个
-
-                   
-                   
-                    content: batchOverview(record ? [record.id] : selectedRows.map((item)=>{return item.id})),
-                    onOk() {
-                        console.log('OK');
-
-                        return request.run({
-                            url: action.uri,
-                            method: action.method,
-                            type: 'delete',
-                            ids: record ? [record.id] : selectedRows,
-                        })
-                    },
-                    onCancel() {
-                        console.log('Cancel');
-                    },
-                });
-
-                break;
-            default:
-                break;
-        }
-
-    }
 
 
 

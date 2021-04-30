@@ -44,7 +44,7 @@
   },
   {
     name: '软件列表',
-    icon: 'table',
+    icon: 'crown',
     path: '/sorftwareList/api/*',
     component: './SorftwareList',
   },

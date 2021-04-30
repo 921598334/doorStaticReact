@@ -63,6 +63,8 @@ const Login: React.FC = () => {
     setSubmitting(true);
     try {
       // 登录，判断用户名密码是否正确
+      console.log("登录参数：",values)
+      
       const msg = await login({ ...values, type });
       if (msg.status === 'ok') {
         message.success('登录成功！');

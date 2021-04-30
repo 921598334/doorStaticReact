@@ -10,6 +10,7 @@ import { submintAdaptor,arrAdaptor } from './helper'
 import { stringify } from 'qs'
 import moment from 'moment'
 
+const myurl = "http://"+window.location.hostname+":8080/"
 
 
 const index = () => {
@@ -57,7 +58,7 @@ const index = () => {
             console.log('init发送的参数valuesPara为：')
             console.log(valuesPara)
             return {
-                url: `http://localhost:8080/typeList/api/getPage?page=${page}&per_page=${perPage}`,
+                url: myurl+`typeList/api/getPage?page=${page}&per_page=${perPage}`,
                 method: 'get',
                 params: valuesPara,
                 paramsSerializer: (params) => {
@@ -91,7 +92,7 @@ const index = () => {
             console.log('request发送的参数为：')
             console.log(values)
             return {
-                url: `http://localhost:8080/typeList/api${values.url}`,
+                url: myurl+`typeList/api${values.url}`,
                 method: 'post',
                 data: {
                     ...values,

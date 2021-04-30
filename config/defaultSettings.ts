@@ -1,5 +1,6 @@
 import { Settings as LayoutSettings } from '@ant-design/pro-layout';
 
+
 const Settings: LayoutSettings & {
   pwa?: boolean;
   logo?: string;
@@ -12,9 +13,12 @@ const Settings: LayoutSettings & {
   fixedHeader: false,
   fixSiderbar: true,
   colorWeak: false,
-  title: 'Ant Design Pro',
+  title: '交通银行软件园后台',
   pwa: false,
-  logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+   logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+  // logo: require("../src/assets/1111.svg"),
+  
+  
   iconfontUrl: '',
 };
 

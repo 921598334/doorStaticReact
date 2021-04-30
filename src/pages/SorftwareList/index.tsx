@@ -13,6 +13,12 @@ import moment from 'moment'
 const { Option } = Select;
 
 
+
+
+const myurl = "http://"+window.location.hostname+":8080/"
+
+
+
 const index = () => {
 
     const location = useLocation();
@@ -59,7 +65,7 @@ const index = () => {
             console.log('init发送的参数valuesPara为：')
             console.log(valuesPara)
             return {
-                url: `http://localhost:8080/sorftwareList/api/getPage?page=${page}&per_page=${perPage}`,
+                url: myurl+`sorftwareList/api/getPage?page=${page}&per_page=${perPage}`,
                 method: 'get',
                 params: valuesPara,
                 paramsSerializer: (params) => {
@@ -97,7 +103,7 @@ const index = () => {
             console.log('request发送的参数为：')
             console.log(values)
             return {
-                url: `http://localhost:8080/sorftwareList/api${values.url}`,
+                url: myurl+`sorftwareList/api${values.url}`,
                 method: 'post',
                 data: {
                     ...values,
@@ -137,7 +143,7 @@ const index = () => {
             console.log('init发送的参数valuesPara为：')
             console.log(valuesPara)
             return {
-                url: `http://localhost:8080/typeList/api/getPage?page=1&per_page=999`,
+                url: myurl+`typeList/api/getPage?page=1&per_page=999`,
                 method: 'get',
                 params: valuesPara,
                 paramsSerializer: (params) => {
